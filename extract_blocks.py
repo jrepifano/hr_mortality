@@ -43,8 +43,6 @@ def main():
             t = np.hstack((0, t))  # Append zero for first measurement
             hr = ts['heartrate'].to_numpy()
             hr = medfilt(hr, 5)
-            print(hr.shape)
-            print(t.shape)
             ts = pd.DataFrame({'time': t, 'hr': hr})
             ts = ts.interpolate()
             x_i = extract_feats(ts['hr'].to_numpy())
